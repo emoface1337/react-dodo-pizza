@@ -1,11 +1,20 @@
 import React from 'react'
-import './App.css'
+import { Route } from 'react-router-dom'
 
-function App() {
-  return (
-      <div className="App">
-      </div>
-  )
+import Header from './components/Header/Header'
+import Home from "./pages/Home"
+import Cart from "./pages/Cart"
+
+const App = () => {
+    return (
+        <div className="wrapper">
+            <Header/>
+            <div className="content">
+                <Route exact path='/' component={Home}/>
+                <Route exact path='/cart' component={Cart}/>
+            </div>
+        </div>
+    )
 }
 
 export default App
