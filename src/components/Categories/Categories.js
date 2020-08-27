@@ -1,12 +1,15 @@
 import React, { useState } from 'react'
 
-const Categories = ({ categories }) => {
+const Categories = ({ categories, onSelectCategory }) => {
 
     const [activeCategory, setActiveCategory] = useState(null)
 
     const onSelectItem = (index) => {
         setActiveCategory(index)
+        onSelectCategory(index)
     }
+
+    console.log('categories re-render')
 
     return (
         <div className="categories">
