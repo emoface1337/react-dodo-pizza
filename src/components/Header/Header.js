@@ -1,8 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import pizzaLogo from "../../resources/img/pizza-logo.svg"
-import Button from "../Button/Button"
+import pizzaLogo from '../../resources/img/pizza-logo.svg'
+import Button from '../Button/Button'
 
 const Header = () => (
     <div className="header">

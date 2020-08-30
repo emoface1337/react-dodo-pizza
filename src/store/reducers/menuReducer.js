@@ -1,6 +1,6 @@
 const initialState = {
     items: [],
-    isLoading: false
+    isLoaded: false
 }
 
 export const menuReducer = (state = initialState, action) => {
@@ -8,7 +8,13 @@ export const menuReducer = (state = initialState, action) => {
         case 'SET_ITEMS':
             return {
                 ...state,
-                items: action.payload
+                items: action.payload,
+                isLoaded: true
+            }
+        case 'SET_LOADED':
+            return {
+                ...state,
+                isLoaded: action.payload
             }
         default:
             return state
