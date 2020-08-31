@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { constants } from "../constants"
 
 export const fetchItems = (category, sortBy) => dispatch => {
     dispatch(setLoaded(false))
@@ -7,11 +8,11 @@ export const fetchItems = (category, sortBy) => dispatch => {
 }
 
 export const setItems = items => ({
-    type: 'SET_ITEMS',
+    type: constants.SET_ITEMS,
     payload: items
 })
 
 export const setLoaded = payload => ({
-    type: 'SET_LOADED',
+    type: constants.SET_LOADED,
     payload
 })
