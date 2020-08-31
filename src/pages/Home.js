@@ -9,7 +9,7 @@ import PizzaLoader from '../components/PizzaBlock/PizzaLoader'
 
 const categories = ["Мясные", "Вегетарианская", "Гриль", "Острые", "Закрытые"]
 const sortItems = [
-    { name: "популярности", type: "popular", order: 'desc'},
+    { name: "популярности", type: "popular", order: 'desc' },
     { name: "цене", type: "price", order: 'desc' },
     { name: "алфавиту", type: "name", order: 'asc' }
 ]
@@ -23,7 +23,6 @@ const Home = memo(() => {
 
     useEffect(() => {
         dispatch(fetchItems(category, sortBy))
-
     }, [dispatch, category, sortBy])
 
     const onSelectCategory = useCallback(index => {

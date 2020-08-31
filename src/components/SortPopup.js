@@ -1,6 +1,6 @@
 import React, { memo, useEffect, useRef, useState } from 'react'
 
-const SortPopup = memo(({ items, activeSortType, onSelectSort }) => {
+const SortPopup = memo(({ items, activeSortType,  onSelectSort }) => {
 
     const [isPopupVisible, setPopupVisible] = useState(false)
     const activeLabel = items.find(item => item.type === activeSortType).name
