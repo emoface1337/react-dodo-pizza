@@ -3,7 +3,7 @@ import { constants } from '../constants'
 
 export const fetchItems = (category, sortBy) => dispatch => {
     dispatch(setLoaded(false))
-    axios.get(`http://localhost:7777/pizzas?${category !== null ? `category=${category}` : ''}&_sort=${sortBy.type}&_order=${sortBy.order}`)
+    axios.get(`/pizzas?${category !== null ? `category=${category}` : ''}&_sort=${sortBy.type}&_order=${sortBy.order}`)
     .then(({ data }) => dispatch(setItems(data)))
 }
 
