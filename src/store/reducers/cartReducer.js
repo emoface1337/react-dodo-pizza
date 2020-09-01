@@ -1,4 +1,4 @@
-import { constants } from "../constants"
+import { constants } from '../constants'
 
 const initialState = {
     items: {},
@@ -9,18 +9,21 @@ const initialState = {
 export const cartReducer = (state = initialState, action) => {
     switch (action.type) {
 
-        case constants.SET_ITEMS:
-            return {
-                ...state,
-                items: action.payload,
-                isLoaded: true
+        case constants.ADD_ITEM_TO_CART: {
+            const newItems = {
+                ...state.items,
+                [action.payload.id]: !state.items[action.payload.id]
+                    ? [action.payload]
+                    : [...state.items[action.payload.id], action.payload]
             }
 
-        case constants.SET_LOADED:
             return {
                 ...state,
-                isLoaded: action.payload
+                items: newItems,
+                totalCount: [].concat.apply([], Object.values(newItems)).length,
+                totalPrice: [].concat.apply([], Object.values(newItems)).reduce((sum, item) => sum + item.price, 0)
             }
+        }
 
         default:
             return state

@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
+import Button from '../Button/Button'
 
-const PizzaBlock = ({ name, imageUrl, price, types, sizes, isLoading }) => {
+const PizzaBlock = ({ id, name, imageUrl, price, types, sizes, onAddItem, addedCount }) => {
 
     const [activeType, setActiveType] = useState(types[0])
-    const [activeSize, setActiveSize] = useState(sizes[0])
+    const [activeSize, setActiveSize] = useState(0)
 
     const availableTypes = ['тонкое', 'традиционное']
     const availableSize = [26, 30, 40]
@@ -16,6 +17,18 @@ const PizzaBlock = ({ name, imageUrl, price, types, sizes, isLoading }) => {
 
     const onSelectSize = index => {
         setActiveSize(index)
+    }
+
+    const onClickAddItem = () => {
+        const item = {
+            id,
+            name,
+            imageUrl,
+            price,
+            type: availableTypes[activeType],
+            size: sizes[activeSize]
+        }
+        onAddItem(item)
     }
 
     return (
@@ -48,10 +61,10 @@ const PizzaBlock = ({ name, imageUrl, price, types, sizes, isLoading }) => {
                             <li
                                 key={size}
                                 className={classNames({
-                                    active: activeSize === size,
+                                    active: activeSize === index,
                                     disabled: !sizes.includes(size)
                                 })}
-                                onClick={() => onSelectSize(size)}>
+                                onClick={() => onSelectSize(index)}>
                                 {size} см
                             </li>
                         )
@@ -60,7 +73,7 @@ const PizzaBlock = ({ name, imageUrl, price, types, sizes, isLoading }) => {
             </div>
             <div className="pizza-block__bottom">
                 <div className="pizza-block__price">от {price} ₽</div>
-                <div className="button button--outline button--add">
+                <Button onClick={onClickAddItem} className="button--add" outline>
                     <svg
                         width="12"
                         height="12"
@@ -74,8 +87,8 @@ const PizzaBlock = ({ name, imageUrl, price, types, sizes, isLoading }) => {
                         />
                     </svg>
                     <span>Добавить</span>
-                    <i>2</i>
-                </div>
+                    {addedCount && <i>{addedCount}</i>}
+                </Button>
             </div>
         </div>
     )
