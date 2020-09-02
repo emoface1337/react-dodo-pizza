@@ -55,7 +55,7 @@ const Home = memo(() => {
                     isLoaded ? items.map(item => (
                             <PizzaBlock key={item.id} {...item}
                                         onAddItem={handleAddItemToCart}
-                                        addedCount={cartItems[item.id] && cartItems[item.id].length}
+                                        addedCount={cartItems[item.id] && cartItems[item.id].items.length}
                             />
                         )) :
                         Array(12).fill(0).map((_, index) => <PizzaLoader key={index}/>)

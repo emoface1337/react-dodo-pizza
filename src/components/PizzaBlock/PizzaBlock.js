@@ -9,7 +9,7 @@ const PizzaBlock = ({ id, name, imageUrl, price, types, sizes, onAddItem, addedC
     const [activeSize, setActiveSize] = useState(0)
 
     const availableTypes = ['тонкое', 'традиционное']
-    const availableSize = [26, 30, 40]
+    const availableSizes = [26, 30, 40]
 
     const onSelectType = index => {
         setActiveType(index)
@@ -26,7 +26,7 @@ const PizzaBlock = ({ id, name, imageUrl, price, types, sizes, onAddItem, addedC
             imageUrl,
             price,
             type: availableTypes[activeType],
-            size: sizes[activeSize]
+            size: availableSizes[activeSize]
         }
         onAddItem(item)
     }
@@ -57,7 +57,7 @@ const PizzaBlock = ({ id, name, imageUrl, price, types, sizes, onAddItem, addedC
                 </ul>
                 <ul>
                     {
-                        availableSize.map((size, index) =>
+                        availableSizes.map((size, index) =>
                             <li
                                 key={size}
                                 className={classNames({
