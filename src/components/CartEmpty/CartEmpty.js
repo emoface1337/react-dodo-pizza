@@ -1,11 +1,12 @@
 import React from 'react'
-import cartEmptyImage from '../../resources/img/empty-cart.png'
 import { Link } from 'react-router-dom'
 
-const CartEmpty = () => {
-    return (
+import cartEmptyImage from '../../resources/img/empty-cart.png'
+
+const CartEmpty = () =>
+    (
         <div className="cart cart--empty">
-            <h2>Корзина пустая <icon>😕</icon></h2>
+            <h2>Корзина пустая</h2>
             <p>
                 Вероятней всего, вы не заказывали ещё пиццу.<br/>
                 Для того, чтобы заказать пиццу, перейди на главную страницу.
@@ -16,6 +17,5 @@ const CartEmpty = () => {
             </Link>
         </div>
     )
-}
 
 export default CartEmpty

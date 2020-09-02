@@ -1,8 +1,9 @@
 import React, { memo, useCallback, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+
 import Categories from '../components/Categories/Categories'
 import SortPopup from '../components/SortPopup'
 import PizzaBlock from '../components/PizzaBlock/PizzaBlock'
-import { useDispatch, useSelector } from 'react-redux'
 import { setCategory, setSortBy } from '../store/actions/filterActions'
 import { fetchItems } from '../store/actions/menuActions'
 import PizzaLoader from '../components/PizzaBlock/PizzaLoader'

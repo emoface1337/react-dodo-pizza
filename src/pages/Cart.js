@@ -1,8 +1,9 @@
 import React from 'react'
-import CartItem from '../components/CartItem/CartItem'
 import { useDispatch, useSelector } from 'react-redux'
-import { clearCart } from '../store/actions/cartActions'
 import { Link } from 'react-router-dom'
+
+import CartItem from '../components/CartItem/CartItem'
+import { clearCart, minusCartItem, plusCartItem, removeCartItem } from '../store/actions/cartActions'
 import CartEmpty from '../components/CartEmpty/CartEmpty'
 
 const Cart = () => {
@@ -19,6 +20,18 @@ const Cart = () => {
         if (window.confirm('Очистить корзину?')) {
             dispatch(clearCart())
         }
+    }
+
+    const onRemoveItem = id => {
+        dispatch(removeCartItem(id))
+    }
+
+    const onPlusCartItem = id => {
+        dispatch(plusCartItem(id))
+    }
+
+    const onMinusCartItem = id => {
+        dispatch(minusCartItem(id))
     }
 
     return (
@@ -67,9 +80,13 @@ const Cart = () => {
                             {
                                 addedItems.map(item => (
                                     <CartItem
+                                        key={item.id}
                                         {...item}
                                         totalPrice={items[item.id].totalPrice}
                                         totalCount={items[item.id].items.length}
+                                        onRemoveItem={onRemoveItem}
+                                        onPlusCartItem={onPlusCartItem}
+                                        onMinusCartItem={onMinusCartItem}
                                     />
                                 ))
                             }
